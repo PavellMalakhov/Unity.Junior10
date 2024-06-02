@@ -2,11 +2,11 @@ using System.Collections;
 using UnityEngine.Pool;
 using UnityEngine;
 
-public class GameObjecstSpawner : MonoBehaviour
+public class SpawnerCubs : MonoBehaviour
 {
     [SerializeField] private GameObject _prefab;
-    [SerializeField] private int _poolCapaciti = 25;
-    [SerializeField] private int _poolMaxSize = 50;
+    [SerializeField] private int _poolCapaciti = 40;
+    [SerializeField] private int _poolMaxSize = 100;
 
     private ObjectPool<GameObject> _pool;
 
@@ -76,7 +76,15 @@ public class GameObjecstSpawner : MonoBehaviour
 
         yield return wait;
 
-        _pool.Release(other.gameObject);
+        if (other.gameObject.activeSelf == true)
+        {
+            _pool.Release(other.gameObject);
+            yield break;
+        }
+        else
+        {
+            yield break;
+        }
     }
 
     private Color GetRandomColor()

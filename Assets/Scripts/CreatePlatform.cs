@@ -11,7 +11,7 @@ public class CreatePlatform : MonoBehaviour
         platform.name = platformName;
         platform.GetComponent<Renderer>().material.color = new Color();
         platform.transform.localScale = platformSize;
-        platform.AddComponent<GameObjecstSpawner>();
+        platform.AddComponent<SpawnerCubs>();
         platform.GetComponent<Collider>().isTrigger = true;
         platform.AddComponent<BoxCollider>();
     }
