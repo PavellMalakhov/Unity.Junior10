@@ -436,7 +436,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 780176325}
-  - component: {fileID: 780176324}
+  - component: {fileID: 780176326}
   m_Layer: 0
   m_Name: "\u0421loudCubes"
   m_TagString: Untagged
@@ -444,21 +444,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &780176324
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 780176323}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4c1feb6ec4747e41ac4c3ae2828b5e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _prefab: {fileID: 7114678872785168752, guid: 7f4fce0089f2bd1439cbf79f165289f4, type: 3}
-  _poolCapaciti: 40
-  _poolMaxSize: 100
 --- !u!4 &780176325
 Transform:
   m_ObjectHideFlags: 0
@@ -474,6 +459,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &780176326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 780176323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4c1feb6ec4747e41ac4c3ae2828b5e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prefab: {fileID: 7114678872785168752, guid: 7f4fce0089f2bd1439cbf79f165289f4, type: 3}
+  _poolCapaciti: 40
+  _poolMaxSize: 100
 --- !u!1 &886996943
 GameObject:
   m_ObjectHideFlags: 0

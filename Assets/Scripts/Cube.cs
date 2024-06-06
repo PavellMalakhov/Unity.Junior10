@@ -1,46 +1,48 @@
 using System.Collections;
 using UnityEngine;
+using System;
 
+[RequireComponent(typeof(Renderer))]
+[RequireComponent(typeof(Rigidbody))]
 
 public class Cube : MonoBehaviour
 {
-    [SerializeField] private Cloud _cloud;
+    public static event Action<GameObject> CubeFalled;
 
     private void OnTriggerEnter(Collider other)
     {
-        gameObject.GetComponent<Rigidbody>().isKinematic = true;
+        Init();
+    }
 
-        gameObject.GetComponent<Renderer>().material.color = GetRandomColor();
+    private void Init()
+    {
+        GetComponent<Rigidbody>().isKinematic = true;
+        GetComponent<Renderer>().material.color = GetRandomColor();
 
         float lifetimeMinCube = 2f;
         float lifetimeMaxCube = 5f;
-        float delay = Random.Range(lifetimeMinCube, lifetimeMaxCube);
+        float delay = UnityEngine.Random.Range(lifetimeMinCube, lifetimeMaxCube);
+        Color cubeStartColor = new Color(1, 1, 1);
 
-        StartCoroutine(CountUp(delay));
+        StartCoroutine(CountUp(delay, cubeStartColor));
     }
 
-    private IEnumerator CountUp(float delay)
+    private IEnumerator CountUp(float delay, Color cubeStartColor)
     {
         var wait = new WaitForSeconds(delay);
-
+        
         yield return wait;
 
-        if (gameObject.activeSelf == true)
-        {
-            _cloud.ReturnCubeInCloud(gameObject);
-            yield break;
-        }
-        else
-        {
-            yield break;
-        }
+        GetComponent<Renderer>().material.color = cubeStartColor;
+        GetComponent<Rigidbody>().isKinematic = false;
+        CubeFalled.Invoke(gameObject);
     }
 
     private Color GetRandomColor()
     {
-        float colorChannelR = Random.value;
-        float colorChannelG = Random.value;
-        float colorChannelB = Random.value;
+        float colorChannelR = UnityEngine.Random.value;
+        float colorChannelG = UnityEngine.Random.value;
+        float colorChannelB = UnityEngine.Random.value;
 
         return new Color(colorChannelR, colorChannelG, colorChannelB);
     }
